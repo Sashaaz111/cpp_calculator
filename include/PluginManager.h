@@ -30,4 +30,12 @@ private:
     std::unordered_map<std::string, const PluginInfo*> binary_operators_;
 
     void unloadAll();
+    bool tryLoadSinglePlugin(const std::filesystem::path& file_path);
+    void registerPlugin(const PluginInfo* info, const std::string& filename);
+
+    static bool isSupportedPluginFile(const std::filesystem::directory_entry& entry);
+    static bool isValidPluginInfo(const PluginInfo* info);
+    static void* openLibrary(const std::string& filepath);
+    static GetPluginInfoFunc resolveEntryFunction(void* handle);
+    static void closeLibrary(void* handle);
 };
