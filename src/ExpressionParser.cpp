@@ -245,8 +245,3 @@ double ExpressionParser::applyUnaryFunction(const std::string& func_name, double
     }
     return result;
 }
-    if (!info->eval(&arg, 1, &result, err_buf, sizeof(err_buf))) {
-        throw std::domain_error(std::string("Ошибка при вычислении ") + func_name + ": " + err_buf);
-    }
-    return result;
-}
